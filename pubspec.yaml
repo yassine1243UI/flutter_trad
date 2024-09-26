@@ -30,8 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    # pour la requette api 
   http: ^0.13.6
-
+  # pour le son 
+  flutter_sound: ^9.2.13  
+  path_provider: ^2.0.11 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
