@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';  // Import Rive package
 import 'home_page.dart';
 
 class LaunchPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _LaunchPageState extends State<LaunchPage> {
   }
 
   _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 2), () {});
+    await Future.delayed(Duration(seconds: 3), () {});  // Animation duration
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => HomePage()),
@@ -24,11 +25,32 @@ class _LaunchPageState extends State<LaunchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'Welcome to Translate App!',
-          style: TextStyle(fontSize: 24),
-        ),
+      body: Stack(
+        children: [
+          // Rive Animation
+          const RiveAnimation.asset(
+            'assets/loading_animation.riv', // Path to your Rive file
+            fit: BoxFit.cover,
+          ),
+          // Overlay welcome text
+          Center(
+            child: Text(
+              'Welcome to Translate App!',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // Add some contrast with the animation
+                shadows: [
+                  Shadow(
+                    offset: Offset(2.0, 2.0),
+                    blurRadius: 3.0,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
